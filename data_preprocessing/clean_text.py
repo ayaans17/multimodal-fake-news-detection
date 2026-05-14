@@ -10,8 +10,12 @@ nltk.download('wordnet')
 nltk.download('omw-1.4')
 
 df = pd.read_csv("../Dataset/merged.csv")
+ev_df = pd.read_csv("Dataset\\evons.csv",encoding="latin-1")
 
-text_column = "title"
+ifnd_df = pd.read_csv("Dataset\\ifnd.csv",encoding="latin-1")
+buzz_df = pd.read_csv("Dataset\\BuzzFeed.csv",encoding="latin-1")
+
+text_column = "text"
 
 stop_words = set(stopwords.words("english"))
 lemmatizer = WordNetLemmatizer()
@@ -39,4 +43,5 @@ def basic_clean(text):
 
     return text
 
-df["clean_text"] = df[text_column].apply(basic_clean)
+buzz_df["clean_text"] = buzz_df[text_column].apply(basic_clean)
+buzz_df.to_csv("Dataset/processed/buzzfeed/bf_processed.csv", index=False)
