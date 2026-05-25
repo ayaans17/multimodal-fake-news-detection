@@ -13,7 +13,7 @@ class FakeNewsDataset(torch.utils.data.Dataset):
             for key, val in self.encodings.items()
         }
 
-        item["labels"] = torch.tensor(self.labels[idx])
+        item["labels"] = torch.tensor(self.labels[idx],dtype=torch.long)
 
         return item
 
